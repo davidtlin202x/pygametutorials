@@ -40,15 +40,10 @@ platforms = [
 ]
 
 # --- Coins ---
-COIN_SIZE = 20
-coins = [
-    pygame.Rect(150, HEIGHT - 100, COIN_SIZE, COIN_SIZE),
-    pygame.Rect(350, HEIGHT - 250, COIN_SIZE, COIN_SIZE)
-]
-coins_collected = 0
+# TODO
 
 # --- Exit ---
-exit_rect = pygame.Rect(LEVEL_WIDTH - 60, HEIGHT - 120, 40, 70)
+# TODO
 
 # --- Game State ---
 running, game_over = True, False
@@ -68,18 +63,11 @@ while running:
                 jump_count = JUMP_POWER
                 MOVE_SPEED = 5
                 coins_collected = 0
-                # Reset coins
+                # Create Coins
                 coins = [
                     pygame.Rect(150, HEIGHT - 100, COIN_SIZE, COIN_SIZE),
                     pygame.Rect(350, HEIGHT - 250, COIN_SIZE, COIN_SIZE),
                     pygame.Rect(550, HEIGHT - 400, COIN_SIZE, COIN_SIZE),
-                    pygame.Rect(800, HEIGHT - 300, COIN_SIZE, COIN_SIZE),
-                    pygame.Rect(950, HEIGHT - 150, COIN_SIZE, COIN_SIZE),
-                    pygame.Rect(1100, HEIGHT - 200, COIN_SIZE, COIN_SIZE),
-                    pygame.Rect(1250, HEIGHT - 100, COIN_SIZE, COIN_SIZE),
-                    pygame.Rect(1450, HEIGHT - 250, COIN_SIZE, COIN_SIZE),
-                    pygame.Rect(1650, HEIGHT - 300, COIN_SIZE, COIN_SIZE),
-                    pygame.Rect(1850, HEIGHT - 150, COIN_SIZE, COIN_SIZE)
                 ]
         if e.type == pygame.QUIT or (e.type == pygame.KEYDOWN and e.key == pygame.K_q):
             running = False
@@ -117,18 +105,10 @@ while running:
             jump_count = JUMP_POWER
 
     # --- Coin Collection ---
-    for coin in coins[:]:
-        if player.colliderect(coin):
-            coins.remove(coin)
-            coins_collected += 1
-
+    #TODO
+    
     # --- Exit Check ---
-    if player.colliderect(exit_rect):
-        if coins_collected == 10:
-            game_over = True
-        else:
-            # Prevent player from passing through exit early
-            player.right = exit_rect.left
+    #TODO
 
     # --- Camera Follow ---
     camera_x = player.centerx - WIDTH // 2
@@ -147,9 +127,7 @@ while running:
         p.draw(win, camera_x)
 
     # Draw coins
-    for coin in coins:
-        draw_coin = coin.move(-camera_x, 0)
-        pygame.draw.ellipse(win, COIN_COLOR, draw_coin)
+    #TODO
 
     # Draw exit
     draw_exit = exit_rect.move(-camera_x, 0)
@@ -160,8 +138,7 @@ while running:
     pygame.draw.rect(win, PLAYER_COLOR, draw_player)
 
     # Draw coin counter
-    coin_text = font.render(f"Coins: {coins_collected}/10", True, (0, 0, 0))
-    win.blit(coin_text, (20, 20))
+    #TODO
 
     # --- Game Over / Win ---
     if game_over:
